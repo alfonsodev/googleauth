@@ -22,7 +22,7 @@ var (
 	CLIENT_ID     = os.Getenv("GOOGLE_CLIENT_ID")
 	CLIENT_SECRET = os.Getenv("GOOGLE_CLIENT_SECRET")
 	SCOPE         = os.Getenv("GOOGLE_SCOPE")
-	REDIRECT      = "http://localhost:3000/google-auth-callback"
+	REDIRECT      = os.Getenv("GOOGLE_REDIRECT")
 )
 
 // config is the configuration specification supplied to the OAuth package.
@@ -34,7 +34,7 @@ var config = &oauth.Config{
 	AuthURL:  "https://accounts.google.com/o/oauth2/auth",
 	TokenURL: "https://accounts.google.com/o/oauth2/token",
 	// Use "postmessage" for the code-flow for server side apps
-	RedirectURL: "http://localhost:3000/google-auth-callback",
+	RedirectURL: REDIRECT,
 }
 
 // store initializes the Gorilla session store.
